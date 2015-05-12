@@ -1,29 +1,16 @@
 #!/usr/bin/env bash
 # Inspired from https://github.com/helmuthdu/dotfiles/blob/master/.bashrc
 
-# Autocolor
-alias ls='ls --color=auto'
-alias dir='dir --color=auto'
-alias vdir='vdir --color=auto'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-
 # Modified commands
 alias ..='cd ..'
 alias df='df -h'
 alias du='du -c -h'
-alias free='free -m'                # show sizes in MB
-alias grep='grep --color=auto'
-alias grep='grep --color=tty -d skip'
 alias mkdir='mkdir -p -v'
 alias more='less'
-alias nano='nano -w'
 alias ping='ping -c 5'
 
 # ls
-alias ls='ls -hF --color=auto'
-alias lr='ls -R'                    # recursive ls
-alias ll='ls -alh'
+alias lr='ls -R'               # recursive ls                    
+alias ll='ls -alrt'
 alias la='ll -A'
 alias lm='la | less'

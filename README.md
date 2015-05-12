@@ -4,7 +4,7 @@
 
 ```bash
 cd ~
-git clone git@github.com:tsunammis/dotfiles.git .dotfiles
+git clone https://github.com/tsunammis/dotfiles.git .dotfiles
 ```
 
 At this moment, nothing is happening, see below to decide what you want to integrate to your bash environment.
@@ -49,4 +49,4 @@ To improve the user experience, you should install *bash-completion* from *[home
 brew install bash-completion
 echo '. ~/.dotfiles/.bash_completion' >> .bashrc
 brew tap homebrew/completions
-``
+```
