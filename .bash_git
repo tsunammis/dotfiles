@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+if which hub &>/dev/null; then
+  alias git=hub
+fi

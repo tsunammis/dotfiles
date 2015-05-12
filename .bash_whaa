@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# Inspired from https://github.com/helmuthdu/dotfiles/blob/master/.bashrc
+
+# TOP 10
+# copyright 2007 - 2010 Christopher Bratusek
+top10() { history | awk '{a[$2]++ } END{for(i in a){print a[i] " " i}}' | sort -rn | head; }
+
+# Finds directory sizes and lists them for the current directory
+dirsize () {
+  du -shx * .[a-zA-Z0-9_]* 2> /dev/null | egrep '^ *[0-9.]*[MG]' | sort -n > /tmp/list
+  egrep '^ *[0-9.]*M' /tmp/list
+  egrep '^ *[0-9.]*G' /tmp/list
+  rm -rf /tmp/list
+}
+
+# Find and removed empty directories
+fared() {
+  read -p "Delete all empty folders recursively [y/N]: " OPT
+  [[ $OPT == y ]] && find . -type d -empty -exec rm -fr {} \; &> /dev/null
+}
+
+# Find and removed all dotfiles
+farad () {
+  read -p "Delete all dotfiles recursively [y/N]: " OPT
+  [[ $OPT == y ]] && find . -name '.*' -type f -exec rm -rf {} \;
+}
+
+# Goes up many dirs as the number passed as argument, if none goes up by 1 by default
+up() {
+  local d=""
+  limit=$1
+  for ((i=1 ; i <= limit ; i++)); do
+    d=$d/..
+  done
+  d=$(echo $d | sed 's/^\///')
+  if [[ -z "$d" ]]; then
+    d=..
+  fi
+  cd $d
+}
