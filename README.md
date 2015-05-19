@@ -39,6 +39,12 @@ echo '. ~/.dotfiles/.bash_alias' >> .bashrc
 echo '. ~/.dotfiles/.bash_git' >> .bashrc
 ```
 
+### Add git config
+
+```bash
+ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig
+```
+
 ### Warnings
 
 **These commands works fine on MacOSX, never tried on another system.**

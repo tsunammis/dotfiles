@@ -1,0 +1,101 @@
+[user]
+    name  = Stan Chollet
+    email = stanislas.chollet@gmail.com
+
+[color]
+    ui     = auto
+    diff   = auto
+    status = auto
+    branch = auto
+    interactive = auto
+
+[color "branch"]
+  current = green
+  remote = yellow
+
+[core]
+    excludesfile = ~/.dotfiles/git/gitignore_global
+    whitespace   = trailing-space,space-before-tab
+    pager        = less -RSX
+    editor       = vim
+    #safecrlf    = true
+    #autocrlf    = false
+
+[grep]
+    extendedRegexp = true
+
+[log]
+    #abbrevCommit = true
+
+[merge]
+    conflictStyle = diff3
+
+[help]
+    autocorrect = 5 # .5 second
+
+[push]
+    # 'nothing'  : Do not push anything
+    # 'matching' : Push all matching branches (default)
+    # 'upstream' : Push the current branch to whatever it is tracking
+    # 'current'  : Push the current branch
+    default = upstream
+
+[pull]
+    # This is GREAT… when you know what you're doing and are careful
+    # not to pull --no-rebase over a local line containing a true merge.
+    #rebase = true
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+  
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
+[alias]
+    # Base
+    st = status
+    df = diff
+    co = checkout
+    ci = commit
+    br = branch
+    fp = format-patch
+
+    # Log
+    lg      = log --graph --pretty=tformat:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%an %cr)%Creset' --abbrev-commit --date=relative
+    oneline = log --pretty=oneline --abbrev-commit --graph
+    lc      = !git oneline ORIG_HEAD.. --stat --no-merges
+
+    # Diff
+    changes = diff --name-status
+    dic = diff --cached
+    diffstat = diff --stat
+
+    # Cancel
+    undo = reset --soft HEAD^
+    unstage = reset HEAD --
+    amend = commit --amend
+
+    # Info
+    track = "!f() { ([ $# -eq 2 ] && ( echo \"Setting tracking for branch \" $1 \" -> \" $2;git branch --set-upstream $1 $2; ) || ( git for-each-ref --format=\"local: %(refname:short) <--sync--> remote: %(upstream:short)\" refs/heads && echo --Remotes && git remote -v)); }; f"
+    ll    = "!f() { git lg origin/master..$1; }; f"
+    dd    = "!f() { git df origin/master...$1; }; f"
+
+    # New branch from master
+    nb = checkout --no-track origin/master -b
+
+    # Add modified files
+    addm = !git-ls-files -m -z | xargs -0 git-add && git status
+    # Add unknown files
+    addu = !git-ls-files -o --exclude-standard -z | xargs -0 git-add && git status
+    # Delete marked files
+    rmm  = !git ls-files -d -z | xargs -0 git-rm && git status
+
+    # Clean merged branches
+    sweep = !git branch --merged master | grep -v 'master$' | xargs git branch -d && git remote prune origin
+
+    m = checkout master
+
+    branches = branch -avv
+    create-pull-request = !sh -c 'stash pull-request $0'
