@@ -12,13 +12,13 @@ At this moment, nothing is happening, see below to decide what you want to integ
 ### Add sexy bash prompt
 
 ```bash
-echo '. ~/.dotfiles/.bash_prompt' >> .bashrc
+echo '. ~/.dotfiles/bash/prompt' >> .bashrc
 ```
 
 ### Add useful command
 
 ```bash
-echo '. ~/.dotfiles/.bash_whaa' >> .bashrc
+echo '. ~/.dotfiles/bash/whaa' >> .bashrc
 ```
 
 * **top10** - _Top 10 commands_
@@ -30,13 +30,13 @@ echo '. ~/.dotfiles/.bash_whaa' >> .bashrc
 ### Add a lot alias
 
 ```bash
-echo '. ~/.dotfiles/.bash_alias' >> .bashrc
+echo '. ~/.dotfiles/bash/alias' >> .bashrc
 ```
 
 ### Add git shortcuts
 
 ```bash
-echo '. ~/.dotfiles/.bash_git' >> .bashrc
+echo '. ~/.dotfiles/bash/git' >> .bashrc
 ```
 
 ### Add git config
@@ -53,6 +53,6 @@ To improve the user experience, you should install *bash-completion* from *[home
 
 ```bash
 brew install bash-completion
-echo '. ~/.dotfiles/.bash_completion' >> .bashrc
+echo '. ~/.dotfiles/bash/completion' >> .bashrc
 brew tap homebrew/completions
 ```
