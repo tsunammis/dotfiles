@@ -1,7 +1,3 @@
-[user]
-    name  = Stan Chollet
-    email = stanislas.chollet@gmail.com
-
 [color]
     ui     = auto
     diff   = auto
@@ -10,8 +6,8 @@
     interactive = auto
 
 [color "branch"]
-  current = green
-  remote = yellow
+    current = green
+    remote = yellow
 
 [core]
     excludesfile = ~/.dotfiles/git/gitignore_global
@@ -48,7 +44,7 @@
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =
-  
+
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
