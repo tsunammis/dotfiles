@@ -41,14 +41,6 @@
     # not to pull --no-rebase over a local line containing a true merge.
     #rebase = true
 
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-
 [alias]
     # Base
     st = status
@@ -95,3 +87,17 @@
 
     branches = branch -avv
     create-pull-request = !sh -c 'stash pull-request $0'
+
+[filter "lfs"]
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true
+
+[user]
+    name = Stan Chollet
+    email = stanislas.chollet@gmail.com
+    signingkey = D9ADFF3AC2688147
+
+[commit]
+    gpgsign = true
+
